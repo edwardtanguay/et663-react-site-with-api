@@ -7,6 +7,7 @@ const backendUrl = "http://localhost:4882";
 export const PageWelcome = () => {
 	const [appMessage, setAppMessage] = useState(""); 
 	const [appName, setAppName] = useState("");
+	const [nodeVersion, setNodeVersion] = useState(0);
 
 	const fetchAppName = async () => {
 		try {
@@ -25,12 +26,20 @@ export const PageWelcome = () => {
 		fetchAppName();
 	}, []);
 
+	useEffect(() => {
+		(async () => {
+			const response = await axios.get(`${backendUrl}/node-version`);
+			setNodeVersion(response.data);
+		})();
+	},[])
+
 	return (
 		<>
 			<h2 className="text-red-600">{appMessage}</h2>
 			{appMessage === "" && (
 				<>
 					<p>APP NAME: {appName}</p>
+					<p>NODE-VERSION: {nodeVersion}</p>
 				</>
 			)}
 		</>
