@@ -7,7 +7,7 @@ const backendUrl = "http://localhost:4882";
 export const PageWelcome = () => {
 	const [appMessage, setAppMessage] = useState(""); 
 	const [appName, setAppName] = useState("");
-	const [nodeVersion, setNodeVersion] = useState(0);
+	const [nodeVersion, setNodeVersion] = useState('');
 
 	const fetchAppName = async () => {
 		try {

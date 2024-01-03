@@ -14,7 +14,7 @@ app.get('/', (_req, res) => {
 });
 
 app.get('/node-version', (_, res) => {
-	res.json(999);
+	res.json(process.version);
 })
 
 app.listen(port, () => {
